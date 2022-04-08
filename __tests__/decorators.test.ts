@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { JsonProperty } from './decorators';
+import { JsonProperty } from '../src/decorators';
 import {
   BUILDER_TYPE_META_DATA,
   CLASS_TYPE_META_DATA,
@@ -7,7 +7,7 @@ import {
   FIELD_META_DATA,
   REQUIRED_META_DATA,
   TYPE_META_DATA,
-} from './constants';
+} from '../src/constants';
 
 class TestClass {
   @JsonProperty({

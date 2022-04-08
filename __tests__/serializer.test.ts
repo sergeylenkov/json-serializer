@@ -1,11 +1,11 @@
 import 'reflect-metadata';
-import { JsonProperty } from './decorators';
-import { JSONObject } from './types';
+import { JsonProperty } from '../src/decorators';
+import { JSONObject } from '../src/types';
 import {
   InvalidFieldTypeException,
   RequiredFieldException,
-} from './exceptions';
-import { JsonSerializer } from './serializer';
+} from '../src/exceptions';
+import { JsonSerializer } from '../src/serializer';
 
 const testJson = {
   defaultField: 'default',

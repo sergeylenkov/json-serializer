@@ -2,5 +2,5 @@
 module.exports = {
   rootDir: process.cwd(),
   preset: 'ts-jest',
-  testMatch: ['**/src/**/*.test.ts'],
+  testMatch: ['**/__tests__/**/*.test.ts'],
 };

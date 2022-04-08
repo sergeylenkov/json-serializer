@@ -1,7 +1,7 @@
 import {
   RequiredFieldException,
   InvalidFieldTypeException,
-} from './exceptions';
+} from '../src/exceptions';
 
 test('RequiredFieldException', () => {
   try {
