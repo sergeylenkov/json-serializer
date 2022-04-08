@@ -1,2 +1,2 @@
 # json-serializer
-Typescript JSON serializer
+Typescript JSON serializer based on decorators
