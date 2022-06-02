@@ -1,6 +1,8 @@
 # json-serializer
 Typescript JSON serializer based on decorators
 
+![build lib workflow](https://github.com/sergeylenkov/json-serializer/actions/workflows/github-actions.yml/badge.svg)
+
 ## How it works
 
 Declare class
