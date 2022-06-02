@@ -1,95 +1,14 @@
 import 'reflect-metadata';
-import { JsonProperty } from '../src/decorators';
 import { JSONObject } from '../src/types';
 import {
   InvalidFieldTypeException,
   RequiredFieldException,
 } from '../src/exceptions';
 import { JsonSerializer } from '../src/serializer';
-
-const testJson = {
-  defaultField: 'default',
-  string_field: 'sample text',
-  number_field: 12345,
-  object_field: { a: 'b', c: 'd' },
-  date_field: '2021-12-01T12:11:49.925Z',
-  bool_field: false,
-};
-
-const resource = {
-  id: 1,
-  name: 'test',
-};
-
-const testJson2 = {
-  name: 'test',
-  resources: [resource, resource, resource],
-  resource: resource,
-};
-
-const testJson3 = {
-  name: '  test    ',
-};
-
-class TestClass {
-  @JsonProperty()
-  public defaultField: string = '';
-
-  @JsonProperty({ field: 'string_field', required: true })
-  public textField: string = '';
-
-  @JsonProperty('number_field')
-  public numberField: number = 0;
-
-  @JsonProperty({ field: 'object_field', required: true, type: 'object' })
-  public objectField: JSONObject = {};
-
-  @JsonProperty({ field: 'date_field', required: true, type: 'date' })
-  public dateField: Date = new Date();
-
-  @JsonProperty('bool_field')
-  public boolField: boolean = true;
-
-  @JsonProperty({ field: 'default_value_field', defaultValue: 'default value' })
-  public defaultValueField: string = '';
-
-  public notJsonField: string = 'not json field';
-
-  constructor() {}
-}
-
-class Resource {
-  @JsonProperty()
-  public id: number = 0;
-
-  @JsonProperty()
-  public name: string = '';
-}
-
-class TestClass2 {
-  @JsonProperty()
-  public name: string = '';
-
-  @JsonProperty({
-    field: 'resources',
-    required: true,
-    type: 'array',
-    className: Resource,
-  })
-  public resources: Resource[] = [];
-
-  @JsonProperty({
-    field: 'resource',
-    type: 'object',
-    className: Resource,
-  })
-  public resource: Resource = new Resource();
-}
-
-class TestClass3 {
-  @JsonProperty({ field: 'name', builder: (value: any) => value.trim() })
-  public name: string = '';
-}
+import testJson from './json/test.json';
+import testJson2 from './json/test2.json';
+import testJson3 from './json/test3.json';
+import { Resource, TestClass, TestClass2, TestClass3 } from './classes';
 
 test('Serialize', () => {
   const testClass = new TestClass();
@@ -178,7 +97,7 @@ test('Deserialize array of objects', () => {
   const testResource = result.resources[0];
 
   expect(testResource instanceof Resource).toBe(true);
-  expect(testResource.name).toBe('test');
+  expect(testResource.name).toBe('test1');
 });
 
 test('Deserialize builder', () => {

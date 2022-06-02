@@ -1,0 +1,18 @@
+name: github-actions
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: bahmutov/npm-install@v1
+        with:
+          working-directory: lib
+
+      - name: Build library
+        run: npm run build
+        working-directory: lib
+
+      - name: Test library
+        run: npm run test
+        working-directory: lib
