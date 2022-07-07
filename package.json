@@ -1,19 +1,28 @@
 {
-  "name": "json-serializer",
-  "version": "0.1",
+  "name": "@serglenkov/json-serializer",
+  "version": "0.1.1",
   "description": "Typescript JSON serializer based on decorators",
+  "author": "Sergey Lenkov",
+  "license": "MIT",
   "main": "build/lib/index.js",
   "module": "build/lib/index.js",
   "types": "build/lib/index.d.ts",
   "files": [
     "build/lib/**/*"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sergeylenkov/json-serializer.git"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "scripts": {
     "build": "rollup -c ./rollup.config.js",
-    "test": "jest --config ./jest.config.js --coverage=false"
+    "test": "jest --config ./jest.config.js --coverage=false",
+    "pack-and-publish": "npm pack && npm publish --access public"
   },
-  "author": "Sergey Lenkov",
-  "license": "ISC",
   "peerDependencies": {
     "reflect-metadata": "^0.1.13"
   },

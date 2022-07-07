@@ -2,6 +2,7 @@
 Typescript JSON serializer based on decorators
 
 ![build lib workflow](https://github.com/sergeylenkov/json-serializer/actions/workflows/github-actions.yml/badge.svg)
+![npm](https://img.shields.io/npm/v/@serglenkov/json-serializer)
 
 ## How it works
 
@@ -28,3 +29,5 @@ Deserialize class from json
 ```
  JsonSerializer.Deserialize<SomeClass>(SomeClass, someJson);
 ```
+
+See tests for more examples
