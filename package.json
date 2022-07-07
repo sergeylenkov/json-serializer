@@ -1,6 +1,6 @@
 {
   "name": "@serglenkov/json-serializer",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Typescript JSON serializer based on decorators",
   "author": "Sergey Lenkov",
   "license": "MIT",

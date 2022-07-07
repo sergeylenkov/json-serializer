@@ -13,10 +13,10 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           scope: '@serglenkov'
 
-      - name: Build library
+      - name: Build
         run: npm run build
 
-      - name: Test library
+      - name: Test
         run: npm run test
 
       - name: Publish
