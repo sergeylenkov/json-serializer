@@ -3,12 +3,13 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+        NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
     steps:
       - uses: actions/checkout@v2
       - uses: bahmutov/npm-install@v1
       - uses: actions/setup-node@v3
         with:
-          node-version: '16.x'
           registry-url: 'https://registry.npmjs.org'
           scope: '@serglenkov'
 
@@ -20,6 +21,3 @@ jobs:
 
       - name: Publish
         run: npm run pack-and-publish
-
-      env:
-        NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
