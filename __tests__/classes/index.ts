@@ -57,6 +57,14 @@ export class TestClass2 {
     className: Resource,
   })
   public resource: Resource = new Resource();
+
+  @JsonProperty({
+    field: 'resources_not_requied',
+    required: false,
+    type: 'array',
+    className: Resource,
+  })
+  public resourcesNotRequied: Resource[] = [];
 }
 
 export class TestClass3 {

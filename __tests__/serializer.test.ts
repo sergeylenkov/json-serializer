@@ -8,6 +8,7 @@ import { JsonSerializer } from '../src/serializer';
 import testJson from './json/test.json';
 import testJson2 from './json/test2.json';
 import testJson3 from './json/test3.json';
+import testJson4 from './json/test4.json';
 import { Resource, TestClass, TestClass2, TestClass3 } from './classes';
 
 test('Serialize', () => {
@@ -93,6 +94,21 @@ test('Deserialize array of objects', () => {
   expect(result.name).toBe('test');
   expect(result.resources.length).toBe(3);
   expect(result.resource instanceof Resource).toBe(true);
+
+  const testResource = result.resources[0];
+
+  expect(testResource instanceof Resource).toBe(true);
+  expect(testResource.name).toBe('test1');
+});
+
+test('Deserialize array of objects not requied', () => {
+  let result = JsonSerializer.Deserialize<TestClass2>(TestClass2, testJson2);
+
+  expect(result.resourcesNotRequied.length).toBe(0);
+
+  result = JsonSerializer.Deserialize<TestClass2>(TestClass2, testJson4);
+
+  expect(result.resourcesNotRequied.length).toBe(3);
 
   const testResource = result.resources[0];
 
