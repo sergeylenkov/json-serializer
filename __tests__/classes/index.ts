@@ -25,6 +25,9 @@ export class TestClass {
   @JsonProperty({ field: 'date_field', required: true, type: 'date' })
   public dateField: Date = new Date();
 
+  @JsonProperty({ field: 'date_field', required: false, type: 'date' })
+  public dateFieldOptional?: Date;
+
   @JsonProperty('bool_field')
   public boolField: boolean = true;
 

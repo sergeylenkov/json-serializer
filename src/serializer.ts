@@ -18,7 +18,7 @@ export class JsonSerializer {
     return new c();
   }
 
-  static Serialize<T>(obj: T): JSONObject {
+  static Serialize<T extends Object>(obj: T): JSONObject {
     const result: JSONObject = {};
 
     for (const key in obj) {
@@ -93,7 +93,7 @@ export class JsonSerializer {
     return result;
   }
 
-  static Deserialize<T>(type: any, obj: JSONObject): T {
+  static Deserialize<T extends Object>(type: any, obj: JSONObject): T {
     const result = JsonSerializer.Create<T>(type);
 
     for (const key in result) {
@@ -114,6 +114,14 @@ export class JsonSerializer {
 
       if (required && obj[fieldName] === undefined) {
         throw new RequiredFieldException(key);
+      }
+
+      if (!required && obj[fieldName] === undefined) {
+        if (defaultValue) {
+          result[key] = defaultValue as any;
+        }
+
+        break;
       }
 
       switch (fieldType) {
