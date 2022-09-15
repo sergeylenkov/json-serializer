@@ -109,7 +109,7 @@ export class JsonSerializer {
       );
 
       if (!fieldName) {
-        break;
+        continue;
       }
 
       if (required && obj[fieldName] === undefined) {
@@ -121,7 +121,7 @@ export class JsonSerializer {
           result[key] = defaultValue as any;
         }
 
-        break;
+        continue;
       }
 
       switch (fieldType) {
