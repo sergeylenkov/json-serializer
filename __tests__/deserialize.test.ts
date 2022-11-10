@@ -8,7 +8,7 @@ import testJson from './json/test.json';
 import testJson2 from './json/test2.json';
 import testJson3 from './json/test3.json';
 import testJson4 from './json/test4.json';
-import { Resource, TestClass, TestClass2, TestClass3 } from './classes';
+import { Resource, TestClass, TestClass2, TestClass3, TestClass4 } from './classes';
 
 test('Deserialize', () => {
   const result = JsonSerializer.Deserialize<TestClass>(TestClass, testJson);
@@ -96,4 +96,10 @@ test('Deserialize builder', () => {
   const result = JsonSerializer.Deserialize<TestClass3>(TestClass3, testJson3);
 
   expect(result.name).toBe('test');
+});
+
+test('Deserialize OnAfterDeserialize', () => {
+  const result = JsonSerializer.Deserialize<TestClass4>(TestClass4, testJson3);
+
+  expect(result.name).toBe('OnAfterDeserialize');
 });

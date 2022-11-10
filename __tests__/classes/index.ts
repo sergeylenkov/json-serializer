@@ -1,4 +1,5 @@
 import { JsonProperty } from '../../src/decorators';
+import { OnAfterDeserialize } from '../../src/serializer';
 import { JSONObject } from '../../src/types';
 
 export class Resource {
@@ -70,4 +71,13 @@ export class TestClass2 {
 export class TestClass3 {
   @JsonProperty({ field: 'name', builder: (value: any) => value.trim() })
   public name: string = '';
+}
+
+export class TestClass4 implements OnAfterDeserialize {
+  @JsonProperty({ field: 'name' })
+  public name: string = '';
+
+  public OnAfterDeserialize(): void {
+    this.name = 'OnAfterDeserialize';
+  }
 }

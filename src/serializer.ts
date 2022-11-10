@@ -12,6 +12,11 @@ import {
   InvalidFieldTypeException,
   RequiredFieldException,
 } from './exceptions';
+import { isOnAfterDeserialize } from './utils';
+
+export interface OnAfterDeserialize {
+  OnAfterDeserialize(): void;
+}
 
 export class JsonSerializer {
   static Create<Type>(c: { new (): Type }): Type {
@@ -217,6 +222,10 @@ export class JsonSerializer {
       if (builder && typeof builder === 'function') {
         result[key] = builder(result[key]);
       }
+    }
+
+    if (isOnAfterDeserialize(result)) {
+      result.OnAfterDeserialize();
     }
 
     return result;

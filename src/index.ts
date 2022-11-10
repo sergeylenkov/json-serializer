@@ -1,4 +1,4 @@
-import { JsonSerializer } from './serializer';
+import { JsonSerializer, OnAfterDeserialize } from './serializer';
 import {
   RequiredFieldException,
   InvalidFieldTypeException,
@@ -12,4 +12,5 @@ export {
   InvalidFieldTypeException,
   SerializationException,
   JsonProperty,
+  OnAfterDeserialize
 };
